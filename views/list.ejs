@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+</head>
+<body>
+  <div class="box">
+  <h1>To-Do List</h1>
+  </div>
+  <div class="box">
+    <% for(var i=0 ;i<dayej.length ;i++){ %>
+      <form action="/deleted" method ="POST">
+      <div class="Item">        
+        <input type="checkbox" name="checkbox" value="<%= dayej[i]._id %>" onchange="this.form.submit()">
+      <p><%= dayej[i].name%></p>
+      </div>
+      </form>
+     <%  }%>
+  <form action="/" method="post">
+    <input type="text" name="newItem" placeholder="Enter new Item" required >
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
