@@ -44,6 +44,71 @@ app.post("/deleted", async function (req, res) {
     res.redirect("/");
   }
 });
+// Delete item by ID
+app.post("/delete", async (req, res) => {
+  const id = req.body.checkbox;
+  try {
+    await Item.findByIdAndDelete(id);
+    console.log("Item deleted successfully");
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect("/");
+});
+
+// DELETE route
+app.post("/delete", async (req, res) => {
+  const id = req.body.id;
+  try {
+    await Item.findByIdAndDelete(id);
+    console.log("Item deleted successfully");
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect("/");
+});
+
+// EDIT route
+app.post("/edit", async (req, res) => {
+  const { id, updatedText } = req.body;
+  try {
+    await Item.findByIdAndUpdate(id, { name: updatedText });
+    console.log("Item updated successfully");
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect("/");
+});
+ //DELETE route
+app.post("/delete", async (req, res) => {
+  const id = req.body.id;
+  try {
+    await Item.findByIdAndDelete(id);
+    console.log("Item deleted successfully");
+  } catch (err) {
+    console.log(err);
+  }
+  res.redirect("/");
+});
+app.post("/deleted", async (req, res) => {
+    const id = req.body.id;
+    await todos.findByIdAndDelete(id);
+    console.log("Item Deleted Successfully");
+    res.redirect("/");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(8000, function () {
   console.log("Server started on port 8000");
 });
